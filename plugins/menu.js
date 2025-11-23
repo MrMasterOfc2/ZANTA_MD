@@ -44,7 +44,7 @@ cmd(
         from,
         {
           image: {
-            url: "https://github.com/Akashkavindu/ZANTA_MD/blob/main/images/ChatGPT%20Image%20Nov%2023,%202025,%2005_09_00%20AM.png?raw=true",
+            url: "https://github.com/Akashkavindu/ZANTA_MD/blob/main/images/ChatGPT%20Image%20Nov%2021,%202025,%2001_49_53%20AM.png?raw=true",
           },
           caption,
         },
@@ -56,6 +56,7 @@ cmd(
     }
   }
 );
+
 
 
 
