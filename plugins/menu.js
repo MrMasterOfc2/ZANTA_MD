@@ -29,8 +29,8 @@ cmd(
         });
       }
 
+      // MENU TEXT BUILD
       let menuText = "📋 *Available Commands:*\n";
-
       for (const [cat, cmds] of Object.entries(categories)) {
         menuText += `\n📂 *${cat.toUpperCase()}*\n`;
         cmds.forEach(c => {
@@ -38,25 +38,21 @@ cmd(
         });
       }
 
-      await reply(menuText.trim());
-
+      // SEND IMAGE + MENU TEXT IN ONE MESSAGE
       await zanta.sendMessage(
         from,
         {
           image: {
-            url: "https://github.com/Akashkavindu/ZANTA_MD/blob/main/images/ChatGPT%20Image%20Nov%2021,%202025,%2001_49_53%20AM.png?raw=true",
+            url: "/mnt/data/A_digital_illustration_features_a_promotional_grap.png"
           },
-          caption,
+          caption: menuText.trim(),
         },
         { quoted: mek }
       );
+
     } catch (err) {
       console.error(err);
       reply("❌ Error generating menu.");
     }
   }
 );
-
-
-
-
