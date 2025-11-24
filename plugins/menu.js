@@ -49,7 +49,7 @@ cmd(
                 
                 // Category Header එක සකස් කිරීම
                 const formattedCat = cat.charAt(0).toUpperCase() + cat.slice(1);
-                menuText += `\n*━━━━ 📂 ${formattedCat} Menu *━━━━\n`;
+                menuText += `\n📂 ${formattedCat} Menu *━━━━━>\n`;
                 
                 // Commands එකතු කිරීම
                 cmds.forEach(c => {
@@ -77,4 +77,5 @@ cmd(
         }
     }
 );
+
 
