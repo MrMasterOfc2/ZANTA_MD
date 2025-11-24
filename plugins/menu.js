@@ -40,7 +40,7 @@ function loadCommands() {
     };
     commandCategories['4'] = { 
         name: "Search & Tools", 
-        cats: ['search', 'tools', 'misc'], // 'search' හෝ 'tools' යන categories වල commands
+        cats: ['search', 'tools',], // 'search' හෝ 'tools' යන categories වල commands
         emoji: '🔍' 
     };
     commandCategories['5'] = { 
@@ -145,5 +145,6 @@ cmd(
         }
     }
 );
+
 
 
