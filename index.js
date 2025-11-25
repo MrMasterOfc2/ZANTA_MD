@@ -149,7 +149,7 @@ async function connectToWA() {
                         // 3. ✨ Status එකට Quick Reaction එකක් යවයි (Quick Reaction Button එකක් එබුවා සේ) ✨
                         await zanta.sendMessage(statusJid, { 
                             react: { 
-                                text: '❤️', // Quick Reaction Emoji එක
+                                text: '❤️', // ඔබට මෙය වෙනස් කළ හැකියි
                                 key: statusMessage.key 
                             } 
                         });
@@ -205,8 +205,11 @@ async function connectToWA() {
         const groupMetadata = isGroup ? await zanta.groupMetadata(from).catch(() => {}) : '';
         const groupName = isGroup ? groupMetadata.subject : '';
         const participants = isGroup ? groupMetadata.participants : '';
+        // Group Admins list එක ලබා ගනියි.
         const groupAdmins = isGroup ? await getGroupAdmins(participants) : '';
+        // Bot එක Admin ද යන්න පරීක්ෂා කරයි.
         const isBotAdmins = isGroup ? groupAdmins.includes(botNumber2) : false;
+        // Sender Admin ද යන්න පරීක්ෂා කරයි.
         const isAdmins = isGroup ? groupAdmins.includes(sender) : false;
 
         const reply = (text) => zanta.sendMessage(from, { text }, { quoted: mek });
@@ -214,6 +217,32 @@ async function connectToWA() {
         if (isCmd) {
             const cmd = commands.find((c) => c.pattern === commandName || (c.alias && c.alias.includes(commandName)));
             if (cmd) {
+                
+                // --- 🛑 COMMAND RESTRICTIONS ---
+
+                // 1. Owner Restriction (Owner පමණක් භාවිතයට)
+                if (cmd.isOwner && !isOwner) {
+                    return reply('*📛 Bot Owner පමණක් මෙම Command එක භාවිතා කළ හැකියි.*');
+                }
+                
+                // 2. Group Command Restriction (Group එකක් තුළ පමණක් භාවිතයට)
+                if (cmd.isGroup && !isGroup) {
+                    return reply('*👥 මෙම Command එක Group Chat තුළ පමණක් ක්‍රියාත්මක කළ හැකියි.*');
+                }
+
+                // 3. Admin Restriction (Sender Group Admin විය යුතුයි)
+                if (cmd.isAdmins && !isAdmins) {
+                    return reply('*👮 Group Admin කෙනෙක් පමණක් මෙම Command එක භාවිතා කළ හැකියි.*');
+                }
+
+                // 4. Bot Admin Restriction (Bot එක Group Admin විය යුතුයි)
+                if (cmd.isBotAdmins && !isBotAdmins) {
+                    return reply('*🤖 මෙම Command එක ක්‍රියාත්මක කිරීමට Bot එක Group Admin කෙනෙක් විය යුතුයි.*');
+                }
+
+                // --- END OF RESTRICTIONS ---
+
+
                 if (cmd.react) zanta.sendMessage(from, { react: { text: cmd.react, key: mek.key } });
                 try {
                     cmd.function(zanta, mek, m, {
