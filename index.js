@@ -25,7 +25,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 const prefix = '.';
-const ownerNumber = ['94743404814'];
+const ownerNumber = ['94743404814', '0743404814'];
 const authDir = path.join(__dirname, '/auth_info_baileys/');
 const credsPath = path.join(authDir, 'creds.json');
 
