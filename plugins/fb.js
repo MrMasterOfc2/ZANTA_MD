@@ -1,5 +1,6 @@
 const { cmd, commands } = require("../command");
 const getFbVideoInfo = require("@xaviabot/fb-downloader");
+const config = require("../config"); // BOT_NAME ලබා ගැනීමට
 
 cmd(
   {
@@ -56,8 +57,13 @@ cmd(
       const { title, sd, hd } = result;
       const bestQualityUrl = hd || sd;
       const qualityText = hd ? "HD" : "SD";
+      const botName = config.BOT_NAME || "ZANTA-MD"; 
 
       const desc = `
+╭━─━─━─━─━─━──━╮
+┃*${botName} Fb downloader*
+╰━─━─━─━─━─━──━╯
+
 *Your fb video*
 👻 *Quality*: ${qualityText}
 `;
@@ -82,7 +88,6 @@ cmd(
         { quoted: mek }
       );
 
-      return reply("> *වැඩේ හරි 🙃✅*");
     } catch (e) {
       console.error(e);
       reply(`*Error:* ${e.message || e}`);
