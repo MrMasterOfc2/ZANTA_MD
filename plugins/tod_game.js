@@ -35,8 +35,8 @@ cmd(
     {
         pattern: "tod",
         react: "😈",
-        desc: "Play Truth or Dare. Get a random challenge or question.",
-        category: "fun",
+        desc: "Get challenge or question.",
+        category: "game",
         filename: __filename,
     },
     async (
