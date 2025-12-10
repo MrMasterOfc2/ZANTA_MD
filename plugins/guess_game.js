@@ -9,7 +9,7 @@ cmd(
         pattern: "guess",
         react: "🎲",
         desc: "Number guessing game (1-100)",
-        category: "fun",
+        category: "game",
         filename: __filename,
     },
     async (
