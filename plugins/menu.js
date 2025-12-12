@@ -93,7 +93,7 @@ cmd(
 
                 // Reply එක successful වූ පසු, ID එක ඉවත් කරන්න. (මෙය index.js මගින් ද කළ හැක.)
                 if (selectedCategory && m.quoted) {
-                     lastMenuMessage.delete(from); 
+                     
                 }
             }
 
