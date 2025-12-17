@@ -39,7 +39,7 @@ commands.push({
 ---
 *Powered by ${botName} - 2025*`;
 
-            const helpImg = "https://github.com/Akashkavindu/ZANTA_MD/blob/main/images/menu-new.jpg?raw=true";
+            const helpImg = "https://github.com/Akashkavindu/ZANTA_MD/blob/main/images/alive-new.jpg?raw=true";
 
             await zanta.sendMessage(from, { 
                 image: { url: helpImg }, 
